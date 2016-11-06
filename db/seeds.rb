@@ -61,7 +61,8 @@ end
       "Culture Two",
       "Culture Three",
       "Culture Four",
-      "Culture Five"].sample,
+      "Culture Five"
+      ].sample,
     gender: [
       "Agender",
       "Female",
