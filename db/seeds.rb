@@ -18,7 +18,7 @@ questions = []
   questions <<
   Question.create(
     body: [
-    "How welcome and supported do you feel in the work environment?",
+    "How welcome and supported do you feel in your work environment?",
     "Did you feel closer to your coworkers after the Engineering Empathy Session of last week?",
     "Are you personally benefiting from the the Engineering Empathy Sessions?",
     "Is your team benefiting from the the Engineering Empathy Sessions?"
