@@ -29,13 +29,13 @@ end
 5.times do
   sessions <<
   Session.create(
-    # date format: mm/dd/yy
+    # date format: yy/mm/dd
     date: [
-    Date.new(01, 01, 1970),
-    Date.new(01, 02, 1970),
-    Date.new(01, 03, 1970),
-    Date.new(01, 04, 1970),
-    Date.new(01, 05, 1970)
+    Date.new(1970, 01, 01),
+    Date.new(1970, 01, 02),
+    Date.new(1970, 01, 03),
+    Date.new(1970, 01, 04),
+    Date.new(1970, 01, 05)
     ].sample,
     topic: [
       "Curiosity",
@@ -55,7 +55,7 @@ end
 5.times do
   responders <<
   Responder.create(
-    age: [20, 23, 25, 30, 36, 35, 40, 42 45, 50, 51, 55, 60, 65, 70].sample,
+    age: [20, 23, 25, 30, 36, 35, 40, 42, 45, 50, 51, 55, 60, 65, 70].sample,
     culture: [
       "Culture One",
       "Culture Two",
