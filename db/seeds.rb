@@ -56,7 +56,8 @@ end
   responders <<
   Responder.create(
     age: [20, 23, 25, 30, 36, 35, 40, 42 45, 50, 51, 55, 60, 65, 70].sample,
-    culture: ["Culture One",
+    culture: [
+      "Culture One",
       "Culture Two",
       "Culture Three",
       "Culture Four",
