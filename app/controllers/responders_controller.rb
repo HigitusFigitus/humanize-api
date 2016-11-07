@@ -1,2 +1,0 @@
-class RespondersController < ApplicationController
-end
