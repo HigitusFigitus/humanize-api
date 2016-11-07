@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
+  # constraints subdomain: 'api' do
   namespace :api, :defaults => {:format => :json} do
     namespace :v1 do
-      get     "/responses",     to: "responses#index"
-      post    "/responses",     to: "responses#create"
-      get     "/responses/:id", to: "responses#show"
+      resources :responses,  only: [:index, :create, :show]
+      resources :companies,  only: [:index, :create, :show]
+      resources :responders, only: [:index, :create, :show]
+      resources :sessions,   only: [:index, :create, :show]
     end
   end
+  # end
 end
