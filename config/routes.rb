@@ -7,6 +7,7 @@ Rails.application.routes.draw do
       resources :companies,  only: [:index, :create, :show]
       resources :responders, only: [:index, :create, :show]
       resources :sessions,   only: [:index, :create, :show]
+      resources :responses_by_value, only: :index
     end
   end
   # end
