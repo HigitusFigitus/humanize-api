@@ -14,7 +14,7 @@ sessions = []
 responders = []
 questions = []
 
-5.times do
+30.times do
   questions <<
   Question.create(
     body: [
@@ -26,7 +26,7 @@ questions = []
     )
 end
 
-5.times do
+10.times do
   sessions <<
   Session.create(
     # date format: yy/mm/dd
@@ -52,7 +52,7 @@ end
     )
 end
 
-5.times do
+50.times do
   responders <<
   Responder.create(
     age: [20, 23, 25, 30, 36, 35, 40, 42, 45, 50, 51, 55, 60, 65, 70].sample,
@@ -77,7 +77,7 @@ end
     )
 end
 
-5.times do
+150.times do
   Response.create(
     value: [1, 2, 3, 4, 5].sample,
     responder_id: get_id(responders).sample,
