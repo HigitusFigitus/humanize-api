@@ -6,8 +6,8 @@ class Response < ApplicationRecord
   scope :before, -> (before) {where("before = ?", before)}
 
 
-  def by_question(question_body)
-    question = Question.find_by(body: question_body)
-    responses = Response.where(question_id: question.id)
-  end
+  #def by_question(question_body)
+  #  question = Question.find_by(body: question_body)
+  #  responses = Response.where(question_id: question.id)
+  #end
 end
