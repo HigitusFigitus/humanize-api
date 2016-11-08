@@ -3,10 +3,13 @@ Rails.application.routes.draw do
   namespace :api, :defaults => {:format => :json} do
     namespace :v1 do
       root "responses#index"
-      resources :companies,  only: [:index, :create, :show]
-      resources :sessions,   only: [:index, :create, :show]
-      resources :responders, only: [:index, :create, :show]
-      resources :responses,  only: [:index, :create, :show]
+      resources :companies,  only: [:index, :create, :show] do
+        resources :sessions,   only: [:index, :create, :show] do
+          resources :responders, only: [:index, :create, :show]
+        end
+      end
+
+      #resources :responses,  only: [:index, :create, :show]
 
 
       resources :responses_by_value, only: :index
