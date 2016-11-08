@@ -56,12 +56,11 @@ end
   responders <<
   Responder.create(
     age: [20, 23, 25, 30, 36, 35, 40, 42, 45, 50, 51, 55, 60, 65, 70].sample,
-    culture: [
-      "Culture One",
-      "Culture Two",
-      "Culture Three",
-      "Culture Four",
-      "Culture Five"
+    position: [
+      "Position One",
+      "Position Two",
+      "Position Three",
+      "Position Four"
       ].sample,
     gender: [
       "Agender",
@@ -72,7 +71,6 @@ end
       "Genderflux",
       "Transgender"
       ].sample,
-    presurvey: [false, true].sample,
     session_id: get_id(sessions).sample
     )
 end
@@ -80,6 +78,7 @@ end
 150.times do
   Response.create(
     value: [1, 2, 3, 4, 5].sample,
+    before: [false, true].sample,
     responder_id: get_id(responders).sample,
     question_id: get_id(questions).sample
     )
