@@ -1,6 +1,6 @@
-class Api::V1::ResponsesBeforeController < ApplicationController
+class Api::V1::RespondersBeforeController < ApplicationController
   def index
-    responses = Response.before(params[:before])
-    render json: { status: "SUCCESS", message: "Loaded responses from pre-survey", data: responses }, status: :ok
+    responses = Responder.before(params[:before])
+    render json: { status: "SUCCESS", message: "Loaded responders from pre-survey", data: responses }, status: :ok
   end
 end

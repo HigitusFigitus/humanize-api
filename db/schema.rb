@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 20161106003522) do
     t.integer  "age"
     t.string   "position"
     t.string   "gender"
+    t.boolean  "before"
     t.integer  "session_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -39,7 +40,6 @@ ActiveRecord::Schema.define(version: 20161106003522) do
 
   create_table "responses", force: :cascade do |t|
     t.string   "value"
-    t.boolean  "before"
     t.integer  "responder_id"
     t.integer  "question_id"
     t.datetime "created_at",   null: false

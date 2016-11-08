@@ -3,7 +3,7 @@ class Response < ApplicationRecord
   belongs_to :question
 
   scope :by_value, -> (value) {where("value = ?", value)}
-  scope :before, -> (before) {where("before = ?", before)}
+
 
 
   #def by_question(question_body)

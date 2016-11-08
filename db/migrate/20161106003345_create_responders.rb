@@ -4,6 +4,7 @@ class CreateResponders < ActiveRecord::Migration[5.0]
       t.integer    :age
       t.string     :position
       t.string     :gender
+      t.boolean    :before
       t.references :session, foreign_key: true
 
       t.timestamps

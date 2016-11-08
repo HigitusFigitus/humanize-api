@@ -71,6 +71,7 @@ end
       "Genderflux",
       "Transgender"
       ].sample,
+    before: [false, true].sample,
     session_id: get_id(sessions).sample
     )
 end
@@ -78,7 +79,6 @@ end
 150.times do
   Response.create(
     value: [1, 2, 3, 4, 5].sample,
-    before: [false, true].sample,
     responder_id: get_id(responders).sample,
     question_id: get_id(questions).sample
     )
