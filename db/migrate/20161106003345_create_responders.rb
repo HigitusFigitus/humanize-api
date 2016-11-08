@@ -2,9 +2,9 @@ class CreateResponders < ActiveRecord::Migration[5.0]
   def change
     create_table   :responders do |t|
       t.integer    :age
-      t.string     :culture
+      t.string     :position
       t.string     :gender
-      t.boolean    :presurvey
+      t.boolean    :before
       t.references :session, foreign_key: true
 
       t.timestamps

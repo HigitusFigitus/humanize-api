@@ -1,13 +1,21 @@
 class Api::V1::RespondersController < ApplicationController
 
   def index
-    responders = Responder.all
-    render json: { status: "SUCCESS", message: "Loaded all responders", data: responders }, status: :ok
+    if params[:before]
+      responders = Responder.before(params[:before])
+      data = ApiResponse.buildRespondersJson(responders)
+      render json: ApiResponse.createResponse(request, data)
+    else
+      responders = Responder.all
+      data = ApiResponse.buildRespondersJson(responders)
+      render json: ApiResponse.createResponse(request, data)
+    end
   end
 
   def show
-    @responder = Responder.find(params[:id])
-    render json: @responder, status: :ok
+    responder = Responder.find(params[:id])
+    data = ApiResponse.buildResponderJson(responder)
+    render json: ApiResponse.createResponse(request, data)
   end
 
   def create
@@ -21,6 +29,6 @@ class Api::V1::RespondersController < ApplicationController
   end
 
   def responder_params
-    params.require(:responder).permit(:age, :culture, :gender, :presurvey, :session_id)
+    params.require(:responder).permit(:age, :position, :gender, :presurvey, :session_id)
   end
 end

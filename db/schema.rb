@@ -29,9 +29,9 @@ ActiveRecord::Schema.define(version: 20161106003522) do
 
   create_table "responders", force: :cascade do |t|
     t.integer  "age"
-    t.string   "culture"
+    t.string   "position"
     t.string   "gender"
-    t.boolean  "presurvey"
+    t.boolean  "before"
     t.integer  "session_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
