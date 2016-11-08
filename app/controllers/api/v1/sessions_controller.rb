@@ -1,7 +1,7 @@
 class Api::V1::SessionsController < ApplicationController
 
   def index
-    sessions = Session.all
+    sessions = Session.where(company_id: params[:company_id])
     render json: { status: "SUCCESS", message: "Loaded all sessions", data: sessions }, status: :ok
   end
 

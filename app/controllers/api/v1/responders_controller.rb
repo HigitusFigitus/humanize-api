@@ -2,11 +2,12 @@ class Api::V1::RespondersController < ApplicationController
 
   def index
     if params[:before]
-      responders = Responder.before(params[:before])
+      responders = Responder.where(session_id: params[:session_id]).before(params[:before])
       data = ApiResponse.buildRespondersJson(responders)
       render json: ApiResponse.createResponse(request, data)
     else
-      responders = Responder.all
+      p params[:session_id]
+      responders = Responder.where(session_id: params[:session_id])
       data = ApiResponse.buildRespondersJson(responders)
       render json: ApiResponse.createResponse(request, data)
     end
