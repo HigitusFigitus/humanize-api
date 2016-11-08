@@ -21,6 +21,6 @@ class Api::V1::RespondersController < ApplicationController
   end
 
   def responder_params
-    params.require(:responder).permit(:age, :culture, :gender, :presurvey, :session_id)
+    params.require(:responder).permit(:age, :position, :gender, :presurvey, :session_id)
   end
 end

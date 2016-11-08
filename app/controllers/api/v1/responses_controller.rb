@@ -21,6 +21,6 @@ class Api::V1::ResponsesController < ApplicationController
   end
 
   def response_params
-    params.require(:response).permit(:value, :responder_id, :question_id)
+    params.require(:response).permit(:value, :before, :responder_id, :question_id)
   end
 end
