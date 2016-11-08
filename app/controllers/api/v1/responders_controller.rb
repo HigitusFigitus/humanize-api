@@ -1,8 +1,13 @@
 class Api::V1::RespondersController < ApplicationController
 
   def index
-    responders = Responder.all
-    render json: { status: "SUCCESS", message: "Loaded all responders", data: responders }, status: :ok
+    if params[:before]
+      responders = Responder.before(params[:before])
+      render json: { status: "SUCCESS", message: "Loaded all responders", data: responders }, status: :ok
+    else
+      responders = Responder.all
+      render json: { status: "SUCCESS", message: "Loaded all responders", data: responders }, status: :ok
+    end
   end
 
   def show
@@ -10,7 +15,6 @@ class Api::V1::RespondersController < ApplicationController
     # p request.methods
     # p "*****************"
     # p request.fullpath
-
 
     p responder = Responder.find(params[:id])
     p questions = Response.where(:responder => responder)
@@ -40,18 +44,4 @@ class Api::V1::RespondersController < ApplicationController
   def responder_params
     params.require(:responder).permit(:age, :position, :gender, :presurvey, :session_id)
   end
-end
-
-
-class ApiResponse
-
-  def self.createResponse(request, data)
-
-    {
-      url: request.fullpath,
-      data: data
-    }.to_json
-
-  end
-
 end
