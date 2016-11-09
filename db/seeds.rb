@@ -31,7 +31,7 @@ positions = [
   "C-Level",
   "Senior",
   "Manager",
-  "Staff"
+  "Junior"
 ]
 
 responder1 = allyship_session.responders.create(gender: "Female", age: ages.sample, position: "C-Level", before: true)
@@ -69,10 +69,10 @@ responder7.responses.create(value: rand(1..7), question_id: 1)
 responder7.responses.create(value: rand(1..7), question_id: 2)
 responder7.responses.create(value: rand(1..7), question_id: 3)
 
-13.times.map { staff_responder = allyship_session.responders.create(gender: genders.sample, age: ages.sample, position: "Staff", before: true)
-staff_responder.responses.create(value: rand(1..7), question_id: 1)
-staff_responder.responses.create(value: rand(1..7), question_id: 2)
-staff_responder.responses.create(value: rand(1..7), question_id: 3)}
+13.times.map { junior_rseponder = allyship_session.responders.create(gender: genders.sample, age: ages.sample, position: "Junior", before: true)
+junior_rseponder.responses.create(value: rand(1..7), question_id: 1)
+junior_rseponder.responses.create(value: rand(1..7), question_id: 2)
+junior_rseponder.responses.create(value: rand(1..7), question_id: 3)}
 
 responder_1 = allyship_session.responders.create(gender: "Female", age: ages.sample, position: "C-Level", before: false)
 responder_1.responses.create(value: rand(4..7), question_id: 1)
@@ -109,10 +109,10 @@ responder_7.responses.create(value: rand(4..7), question_id: 1)
 responder_7.responses.create(value: rand(4..7), question_id: 2)
 responder_7.responses.create(value: rand(4..7), question_id: 3)
 
-13.times.map { staff_responder = allyship_session.responders.create(gender: genders.sample, age: ages.sample, position: "Staff", before: false)
-staff_responder.responses.create(value: rand(4..7), question_id: 1)
-staff_responder.responses.create(value: rand(4..7), question_id: 2)
-staff_responder.responses.create(value: rand(4..7), question_id: 3)}
+13.times.map { junior_rseponder = allyship_session.responders.create(gender: genders.sample, age: ages.sample, position: "Junior", before: false)
+junior_rseponder.responses.create(value: rand(4..7), question_id: 1)
+junior_rseponder.responses.create(value: rand(4..7), question_id: 2)
+junior_rseponder.responses.create(value: rand(4..7), question_id: 3)}
 
 # Company.destroy_all
 # Session.destroy_all
