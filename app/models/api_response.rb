@@ -4,7 +4,7 @@ class ApiResponse
     responders = args[:before_param] ? Responder.where(session_id: args[:session_id]).before(args[:before_param]) : Responder.where(session_id: args[:session_id])
     responders = args[:gender_param] ? responders.where(gender: args[:gender_param]) : responders
     if args[:age_group_param]
-      case args[:age_group_param]
+      case args[:age_group_param].to_i
       when 1
         responders = responders.where("age > ?", 17).where("age < ?", 26)
       when 2
