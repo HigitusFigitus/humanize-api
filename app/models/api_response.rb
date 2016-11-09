@@ -1,7 +1,6 @@
 class ApiResponse
   def self.filterResponders(args)
     # Better: Responder.where("attr = ? AND attr1 = ? ...", value, value1, ...)
-    p args[:age_group_param]
     responders = args[:before_param] ? Responder.where(session_id: args[:session_id]).before(args[:before_param]) : Responder.where(session_id: args[:session_id])
     responders = args[:gender_param] ? responders.where(gender: args[:gender_param]) : responders
     if args[:age_group_param]
@@ -13,7 +12,6 @@ class ApiResponse
       when 3
         responders = responders.where("age > ?", 40).where("age < ?", 66)
       when 4
-        p "Are we here?"
         responders = responders.where("age > ?", 64)
       end # ends case
     end # ends if age_group

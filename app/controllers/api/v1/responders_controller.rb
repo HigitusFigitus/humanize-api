@@ -2,8 +2,6 @@ class Api::V1::RespondersController < ApplicationController
 
   def index
     if params[:before] || params[:gender] || params[:age_group] || params[:position]
-      p params
-      p params[:age_group]
       responders = ApiResponse.filterResponders(
         {
           session_id:      params[:session_id],
