@@ -1,8 +1,13 @@
 class Api::V1::CompaniesController < ApplicationController
 
   def index
-    companies = Company.all
-    render json: { status: "SUCCESS", message: "Loaded all companies", data: companies }, status: :ok
+    if params[:name]
+      company = Company.find_by(name: params[:name])
+      render json: ApiResponse.createResponse(request, company)
+    else
+      companies = Company.all
+      render json: { status: "SUCCESS", message: "Loaded all companies", data: companies }, status: :ok
+    end
   end
 
   def show
