@@ -2,6 +2,8 @@ class Api::V1::RespondersController < ApplicationController
 
   def index
     if params[:before] || params[:gender] || params[:age_group] || params[:position]
+      p params
+      p params[:age_group]
       responders = ApiResponse.filterResponders(
         {
           session_id:      params[:session_id],
@@ -31,9 +33,6 @@ class Api::V1::RespondersController < ApplicationController
      @responder = Responder.new(responder_params)
 
     if @responder.save
-      #format.html {render json: @responder}
-      #format.json {render json: @responder}
-      #format.js {render json: @responder}
       render json: @responder, status: :created
     else
       render json: @responder.errors, status: :unprocessable_entity
