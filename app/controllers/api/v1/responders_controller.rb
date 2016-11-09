@@ -23,6 +23,9 @@ class Api::V1::RespondersController < ApplicationController
      @responder = Responder.new(responder_params)
 
     if @responder.save
+      format.html {render json: @responder}
+      format.json {render json: @responder}
+      format.js {render json: @responder}
       render json: @responder, status: :created
     else
       render json: @responders.errors, status: :unprocessable_entity
