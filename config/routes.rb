@@ -9,7 +9,7 @@ Rails.application.routes.draw do
       end
 
       #resources :responses,  only: [:index, :create, :show]
-      #resources :responses_by_value, only: :index
+      resources :responses_by_value, only: :index
       #resources :responses_before, only: :index
       #resources :responses_before_by_question, only: :index # restore after or do nested
       #resources :responses_before_per_session_per_question, only: :index
