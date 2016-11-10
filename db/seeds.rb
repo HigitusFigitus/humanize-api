@@ -29,7 +29,7 @@ end
 
 dropbox = Company.create(name: "Dropbox")
 
-teamwork_session = dropbox.sessions.create(date: Date.new(2016, 10, 21), topic: "Teamwork and 360 Feedback", content: "Bloop")
+teamwork_session = dropbox.sessions.create(date: Date.new(2016, 10, 21), topic: "Teamwork and 360° Feedback", content: "Bloop")
 inner_critic_session = dropbox.sessions.create(date: Date.new(2016, 10, 28), topic: "Inner Critic", content: "Bloop")
 difficult_conversations_session = dropbox.sessions.create(date: Date.new(2016, 11, 04), topic: "Difficult Conversations", content: "Bloop")
 allyship_session = dropbox.sessions.create(date: Date.new(2016, 11, 11), topic: "Allyship", content: "Bloop")
