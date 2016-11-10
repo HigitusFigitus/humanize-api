@@ -21,11 +21,11 @@ Generally speaking, ping the URL of the resource you're requesting along with th
 `https://humanize-api.herokuapp.com/api/v1/companies/company_id/sessions/session_id`
 
 #### Responders
-* Fetch responders by session
+* Fetch responders by session  
 `https://humanize-api.herokuapp.com/api/v1/companies/company_id/sessions/session_id/responders`
-* Fetch responder by session for the pre-session survey
+* Fetch responder by session for the pre-session survey  
 `https://humanize-api.herokuapp.com/api/v1/companies/company_id/sessions/session_id/responders?before=true`
-* Fetch responder by session for the post-session survey
+* Fetch responder by session for the post-session survey  
 `https://humanize-api.herokuapp.com/api/v1/companies/company_id/sessions/session_id/responders?before=false`
 
 #### Responses
