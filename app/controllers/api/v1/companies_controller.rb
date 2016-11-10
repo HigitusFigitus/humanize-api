@@ -1,5 +1,4 @@
 class Api::V1::CompaniesController < ApplicationController
-
   def index
     if params[:name]
       company = Company.find_by(name: params[:name])
