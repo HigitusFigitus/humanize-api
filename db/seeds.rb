@@ -5,18 +5,7 @@ Response.destroy_all
 Question.destroy_all
 
 # These are static
-questions = [Question.create(body: "I feel supported and accepted by my coworkers."), Question.create(body: "My surroundings promote a productive and collaborative environment."), Question.create(body: "Is your team benefiting from the the Engineering Empathy Sessions?")]
-
-def get_id(objects_with_ids)
-  objects_with_ids.map { | object_with_id | object_with_id.id }
-end
-
-dropbox = Company.create(name: "Dropbox")
-
-allyship_session = dropbox.sessions.create(date: Date.new(2016, 11, 11), topic: "Allyship", content: "Bloop")
-dropbox.sessions.create(date: Date.new(2016, 11, 04), topic: "Difficult Conversations", content: "Bloop")
-dropbox.sessions.create(date: Date.new(2016, 10, 28), topic: "Inner Critic", content: "Bloop")
-dropbox.sessions.create(date: Date.new(2016, 10, 21), topic: "Teamwork and 360 Feedback", content: "Bloop")
+questions = [Question.create(body: "My surroundings promote a productive and collaborative environment."), Question.create(body: "I feel supported and accepted by my coworkers."), Question.create(body: "I value and respect diversity in gender, age, and culture.")]
 
 ages = [20, 23, 25, 30, 36, 35, 40, 42, 45, 50, 51, 55, 60, 65, 70]
 genders = [
@@ -33,6 +22,17 @@ positions = [
   "Manager",
   "Junior"
 ]
+
+def get_id(objects_with_ids)
+  objects_with_ids.map { | object_with_id | object_with_id.id }
+end
+
+dropbox = Company.create(name: "Dropbox")
+
+dropbox.sessions.create(date: Date.new(2016, 10, 21), topic: "Teamwork and 360 Feedback", content: "Bloop")
+dropbox.sessions.create(date: Date.new(2016, 10, 28), topic: "Inner Critic", content: "Bloop")
+dropbox.sessions.create(date: Date.new(2016, 11, 04), topic: "Difficult Conversations", content: "Bloop")
+allyship_session = dropbox.sessions.create(date: Date.new(2016, 11, 11), topic: "Allyship", content: "Bloop")
 
 responder1 = allyship_session.responders.create(gender: "Female", age: ages.sample, position: "C-Level", before: true)
 responder1.responses.create(value: rand(1..7), question_id: 1)
@@ -69,10 +69,10 @@ responder7.responses.create(value: rand(1..7), question_id: 1)
 responder7.responses.create(value: rand(1..7), question_id: 2)
 responder7.responses.create(value: rand(1..7), question_id: 3)
 
-13.times.map { junior_rseponder = allyship_session.responders.create(gender: genders.sample, age: ages.sample, position: "Junior", before: true)
-junior_rseponder.responses.create(value: rand(1..7), question_id: 1)
-junior_rseponder.responses.create(value: rand(1..7), question_id: 2)
-junior_rseponder.responses.create(value: rand(1..7), question_id: 3)}
+13.times.map { junior_responder = allyship_session.responders.create(gender: genders.sample, age: ages.sample, position: "Junior", before: true)
+junior_responder.responses.create(value: rand(1..7), question_id: 1)
+junior_responder.responses.create(value: rand(1..7), question_id: 2)
+junior_responder.responses.create(value: rand(1..7), question_id: 3)}
 
 responder_1 = allyship_session.responders.create(gender: "Female", age: ages.sample, position: "C-Level", before: false)
 responder_1.responses.create(value: rand(4..7), question_id: 1)
@@ -109,10 +109,10 @@ responder_7.responses.create(value: rand(4..7), question_id: 1)
 responder_7.responses.create(value: rand(4..7), question_id: 2)
 responder_7.responses.create(value: rand(4..7), question_id: 3)
 
-13.times.map { junior_rseponder = allyship_session.responders.create(gender: genders.sample, age: ages.sample, position: "Junior", before: false)
-junior_rseponder.responses.create(value: rand(4..7), question_id: 1)
-junior_rseponder.responses.create(value: rand(4..7), question_id: 2)
-junior_rseponder.responses.create(value: rand(4..7), question_id: 3)}
+13.times.map { junior_responder = allyship_session.responders.create(gender: genders.sample, age: ages.sample, position: "Junior", before: false)
+junior_responder.responses.create(value: rand(4..7), question_id: 1)
+junior_responder.responses.create(value: rand(4..7), question_id: 2)
+junior_responder.responses.create(value: rand(4..7), question_id: 3)}
 
 # Company.destroy_all
 # Session.destroy_all
