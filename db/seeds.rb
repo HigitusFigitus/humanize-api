@@ -60,7 +60,7 @@ allyship_after_responders = Responder.where(session: allyship_session, before: f
 
 after_responses = allyship_after_responders.map do |responder|
   Question.all.map do |question|
-    responder.responses.create(value: rand(5..7), question: question)
+    responder.responses.create(value: rand(4..7), question: question)
   end
 end
 
