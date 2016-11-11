@@ -8,6 +8,8 @@ Question.destroy_all
 questions = [Question.create(body: "My surroundings promote a productive and collaborative environment."), Question.create(body: "I feel supported and accepted by my coworkers."), Question.create(body: "I value and respect diversity in gender, age, and culture.")]
 
 ages = [20, 23, 25, 30, 36, 35, 40, 42, 45, 50, 51, 55, 60, 65, 70]
+age_group_samples = [20, 30, 50, 70]
+
 genders = [
   "Agender",
   "Female",
@@ -16,16 +18,13 @@ genders = [
   "Gender-fluid",
   "Transgender"
   ]
+
 positions = [
   "C-Level",
   "Senior",
   "Manager",
   "Junior"
 ]
-
-def get_id(objects_with_ids)
-  objects_with_ids.map { | object_with_id | object_with_id.id }
-end
 
 bloopr = Company.create(name: "Bloopr")
 
@@ -34,89 +33,120 @@ inner_critic_session = bloopr.sessions.create(date: Date.new(2016, 10, 28), topi
 difficult_conversations_session = bloopr.sessions.create(date: Date.new(2016, 11, 04), topic: "Difficult Conversations", content: "Bloop")
 allyship_session = bloopr.sessions.create(date: Date.new(2016, 11, 11), topic: "Allyship", content: "Bloop")
 
-# allyship responders before
 
-responder1 = allyship_session.responders.create(gender: "Female", age: ages.sample, position: "C-Level", before: true)
-responder1.responses.create(value: rand(1..5), question_id: 1)
-responder1.responses.create(value: rand(1..5), question_id: 2)
-responder1.responses.create(value: rand(1..5), question_id: 3)
+# allyship responders
 
-responder2 = allyship_session.responders.create(gender: "Male", age: ages.sample, position: "C-Level", before: true)
-responder2.responses.create(value: rand(1..5), question_id: 1)
-responder2.responses.create(value: rand(1..5), question_id: 2)
-responder2.responses.create(value: rand(1..5), question_id: 3)
+befores = [true, false]
 
-responder3 = allyship_session.responders.create(gender: "Male", age: ages.sample, position: "C-Level", before: true)
-responder3.responses.create(value: rand(1..5), question_id: 1)
-responder3.responses.create(value: rand(1..5), question_id: 2)
-responder3.responses.create(value: rand(1..5), question_id: 3)
+allyship_responders = befores.map do |status|
+  genders.map do |gender|
+    age_group_samples.map do |age|
+      positions.map do |position|
+        allyship_session.responders.create(gender: gender, age: age, position: position, before: status)
+      end
+    end
+  end
+end
 
-responder4 = allyship_session.responders.create(gender: "Male", age: ages.sample, position: "Senior", before: true)
-responder4.responses.create(value: rand(1..5), question_id: 1)
-responder4.responses.create(value: rand(1..5), question_id: 2)
-responder4.responses.create(value: rand(1..5), question_id: 3)
+allyship_before_responders = Responder.where(session: allyship_session, before: true)
 
-responder5 = allyship_session.responders.create(gender: "Female", age: ages.sample, position: "Senior", before: true)
-responder5.responses.create(value: rand(1..5), question_id: 1)
-responder5.responses.create(value: rand(1..5), question_id: 2)
-responder5.responses.create(value: rand(1..5), question_id: 3)
+before_responses = allyship_before_responders.map do |responder|
+  Question.all.map do |question|
+    responder.responses.create(value: rand(1..5), question: question)
+  end
+end
 
-responder6 = allyship_session.responders.create(gender: "Female", age: ages.sample, position: "Manager", before: true)
-responder6.responses.create(value: rand(1..5), question_id: 1)
-responder6.responses.create(value: rand(1..5), question_id: 2)
-responder6.responses.create(value: rand(1..5), question_id: 3)
+allyship_after_responders = Responder.where(session: allyship_session, before: false)
 
-responder7 = allyship_session.responders.create(gender: "Male", age: ages.sample, position: "Manager", before: true)
-responder7.responses.create(value: rand(1..5), question_id: 1)
-responder7.responses.create(value: rand(1..5), question_id: 2)
-responder7.responses.create(value: rand(1..5), question_id: 3)
+after_responses = allyship_after_responders.map do |responder|
+  Question.all.map do |question|
+    responder.responses.create(value: rand(1..5), question: question)
+  end
+end
 
-13.times.map { junior_responder = allyship_session.responders.create(gender: genders.sample, age: ages.sample, position: "Junior", before: true)
-junior_responder.responses.create(value: rand(1..5), question_id: 1)
-junior_responder.responses.create(value: rand(1..5), question_id: 2)
-junior_responder.responses.create(value: rand(1..5), question_id: 3)}
-
-# allyship responders after
-
-responder1 = allyship_session.responders.create(gender: "Female", age: ages.sample, position: "C-Level", before: false)
-responder1.responses.create(value: rand(5..7), question_id: 1)
-responder1.responses.create(value: rand(5..7), question_id: 2)
-responder1.responses.create(value: rand(5..7), question_id: 3)
-
-responder2 = allyship_session.responders.create(gender: "Male", age: ages.sample, position: "C-Level", before: false)
-responder2.responses.create(value: rand(5..7), question_id: 1)
-responder2.responses.create(value: rand(5..7), question_id: 2)
-responder2.responses.create(value: rand(5..7), question_id: 3)
-
-responder3 = allyship_session.responders.create(gender: "Male", age: ages.sample, position: "C-Level", before: false)
-responder3.responses.create(value: rand(5..7), question_id: 1)
-responder3.responses.create(value: rand(5..7), question_id: 2)
-responder3.responses.create(value: rand(5..7), question_id: 3)
-
-responder4 = allyship_session.responders.create(gender: "Male", age: ages.sample, position: "Senior", before: false)
-responder4.responses.create(value: rand(5..7), question_id: 1)
-responder4.responses.create(value: rand(5..7), question_id: 2)
-responder4.responses.create(value: rand(5..7), question_id: 3)
-
-responder5 = allyship_session.responders.create(gender: "Female", age: ages.sample, position: "Senior", before: false)
-responder5.responses.create(value: rand(5..7), question_id: 1)
-responder5.responses.create(value: rand(5..7), question_id: 2)
-responder5.responses.create(value: rand(5..7), question_id: 3)
-
-responder6 = allyship_session.responders.create(gender: "Female", age: ages.sample, position: "Manager", before: false)
-responder6.responses.create(value: rand(5..7), question_id: 1)
-responder6.responses.create(value: rand(5..7), question_id: 2)
-responder6.responses.create(value: rand(5..7), question_id: 3)
-
-responder7 = allyship_session.responders.create(gender: "Male", age: ages.sample, position: "Manager", before: false)
-responder7.responses.create(value: rand(5..7), question_id: 1)
-responder7.responses.create(value: rand(5..7), question_id: 2)
-responder7.responses.create(value: rand(5..7), question_id: 3)
-
-13.times.map { junior_responder = allyship_session.responders.create(gender: genders.sample, age: ages.sample, position: "Junior", before: false)
-junior_responder.responses.create(value: rand(5..7), question_id: 1)
-junior_responder.responses.create(value: rand(5..7), question_id: 2)
-junior_responder.responses.create(value: rand(5..7), question_id: 3)}
+# # allyship responders before
+#
+# responder1 = allyship_session.responders.create(gender: "Female", age: ages.sample, position: "C-Level", before: true)
+# responder1.responses.create(value: rand(1..5), question_id: 1)
+# responder1.responses.create(value: rand(1..5), question_id: 2)
+# responder1.responses.create(value: rand(1..5), question_id: 3)
+#
+# responder2 = allyship_session.responders.create(gender: "Male", age: ages.sample, position: "C-Level", before: true)
+# responder2.responses.create(value: rand(1..5), question_id: 1)
+# responder2.responses.create(value: rand(1..5), question_id: 2)
+# responder2.responses.create(value: rand(1..5), question_id: 3)
+#
+# responder3 = allyship_session.responders.create(gender: "Male", age: ages.sample, position: "C-Level", before: true)
+# responder3.responses.create(value: rand(1..5), question_id: 1)
+# responder3.responses.create(value: rand(1..5), question_id: 2)
+# responder3.responses.create(value: rand(1..5), question_id: 3)
+#
+# responder4 = allyship_session.responders.create(gender: "Male", age: ages.sample, position: "Senior", before: true)
+# responder4.responses.create(value: rand(1..5), question_id: 1)
+# responder4.responses.create(value: rand(1..5), question_id: 2)
+# responder4.responses.create(value: rand(1..5), question_id: 3)
+#
+# responder5 = allyship_session.responders.create(gender: "Female", age: ages.sample, position: "Senior", before: true)
+# responder5.responses.create(value: rand(1..5), question_id: 1)
+# responder5.responses.create(value: rand(1..5), question_id: 2)
+# responder5.responses.create(value: rand(1..5), question_id: 3)
+#
+# responder6 = allyship_session.responders.create(gender: "Female", age: ages.sample, position: "Manager", before: true)
+# responder6.responses.create(value: rand(1..5), question_id: 1)
+# responder6.responses.create(value: rand(1..5), question_id: 2)
+# responder6.responses.create(value: rand(1..5), question_id: 3)
+#
+# responder7 = allyship_session.responders.create(gender: "Male", age: ages.sample, position: "Manager", before: true)
+# responder7.responses.create(value: rand(1..5), question_id: 1)
+# responder7.responses.create(value: rand(1..5), question_id: 2)
+# responder7.responses.create(value: rand(1..5), question_id: 3)
+#
+# 13.times.map { junior_responder = allyship_session.responders.create(gender: genders.sample, age: ages.sample, position: "Junior", before: true)
+# junior_responder.responses.create(value: rand(1..5), question_id: 1)
+# junior_responder.responses.create(value: rand(1..5), question_id: 2)
+# junior_responder.responses.create(value: rand(1..5), question_id: 3)}
+#
+# # allyship responders after
+#
+# responder1 = allyship_session.responders.create(gender: "Female", age: ages.sample, position: "C-Level", before: false)
+# responder1.responses.create(value: rand(5..7), question_id: 1)
+# responder1.responses.create(value: rand(5..7), question_id: 2)
+# responder1.responses.create(value: rand(5..7), question_id: 3)
+#
+# responder2 = allyship_session.responders.create(gender: "Male", age: ages.sample, position: "C-Level", before: false)
+# responder2.responses.create(value: rand(5..7), question_id: 1)
+# responder2.responses.create(value: rand(5..7), question_id: 2)
+# responder2.responses.create(value: rand(5..7), question_id: 3)
+#
+# responder3 = allyship_session.responders.create(gender: "Male", age: ages.sample, position: "C-Level", before: false)
+# responder3.responses.create(value: rand(5..7), question_id: 1)
+# responder3.responses.create(value: rand(5..7), question_id: 2)
+# responder3.responses.create(value: rand(5..7), question_id: 3)
+#
+# responder4 = allyship_session.responders.create(gender: "Male", age: ages.sample, position: "Senior", before: false)
+# responder4.responses.create(value: rand(5..7), question_id: 1)
+# responder4.responses.create(value: rand(5..7), question_id: 2)
+# responder4.responses.create(value: rand(5..7), question_id: 3)
+#
+# responder5 = allyship_session.responders.create(gender: "Female", age: ages.sample, position: "Senior", before: false)
+# responder5.responses.create(value: rand(5..7), question_id: 1)
+# responder5.responses.create(value: rand(5..7), question_id: 2)
+# responder5.responses.create(value: rand(5..7), question_id: 3)
+#
+# responder6 = allyship_session.responders.create(gender: "Female", age: ages.sample, position: "Manager", before: false)
+# responder6.responses.create(value: rand(5..7), question_id: 1)
+# responder6.responses.create(value: rand(5..7), question_id: 2)
+# responder6.responses.create(value: rand(5..7), question_id: 3)
+#
+# responder7 = allyship_session.responders.create(gender: "Male", age: ages.sample, position: "Manager", before: false)
+# responder7.responses.create(value: rand(5..7), question_id: 1)
+# responder7.responses.create(value: rand(5..7), question_id: 2)
+# responder7.responses.create(value: rand(5..7), question_id: 3)
+#
+# 13.times.map { junior_responder = allyship_session.responders.create(gender: genders.sample, age: ages.sample, position: "Junior", before: false)
+# junior_responder.responses.create(value: rand(5..7), question_id: 1)
+# junior_responder.responses.create(value: rand(5..7), question_id: 2)
+# junior_responder.responses.create(value: rand(5..7), question_id: 3)}
 
 # difficult conversations responders before
 responder1 = difficult_conversations_session.responders.create(gender: "Female", age: ages.sample, position: "C-Level", before: true)
