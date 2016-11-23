@@ -15,7 +15,7 @@ Documentation for various API resources can be found separately in the following
 
 ## Companies
 
-**Fetch all companies**
+### Fetch all companies
 
 ```
 GET https://humanize-api.herokuapp.com/api/v1/companies
@@ -47,7 +47,7 @@ Example Response:
 }
 ```
 
-**Fetch a specific company**
+### Fetch a specific company
 
 ```
 GET https://humanize-api.herokuapp.com/api/v1/companies/company_id
@@ -70,7 +70,7 @@ Example Response:
 
 ## Sessions
 
-**Fetch all sessions**
+### Fetch all sessions
 
 ```
 GET https://humanize-api.herokuapp.com/api/v1/companies/company_id/sessions
@@ -126,7 +126,7 @@ Example Response:
 }
 ```
 
-**Fetch a specific session**
+### Fetch a specific session
 
 ```
 GET https://humanize-api.herokuapp.com/api/v1/companies/company_id/sessions/session_id
@@ -151,7 +151,7 @@ Example Response:
 
 ## Responders
 
-**Fetch responders by session**
+### Fetch responders by session
 
 ```
 GET https://humanize-api.herokuapp.com/api/v1/companies/company_id/sessions/session_id/responders
@@ -206,7 +206,7 @@ Example Response:
 }
 ```
 
-**Fetch a specific subset of responders**
+### Fetch a specific subset of responders
 
 Example Query:
 
@@ -225,7 +225,7 @@ Parameters (note that all parameters are optional):
 
 ## Responses
 
-**Fetch responses by value**
+### Fetch responses by value
 
 ```
 GET https://humanize-api.herokuapp.com/api/v1/responses_by_value?value=1
