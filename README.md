@@ -1,14 +1,19 @@
 # Humanize API
 
-## API REST Requests
+The Humanize API stores anonymous responses to pre-EE/post-EE session surveys with demographics tied to them.
 
-The API root URL is located at https://humanize-api.herokuapp.com/api/v1
+The API root URL is located at `https://humanize-api.herokuapp.com/api/v1`.
 
-Generally speaking, ping the URL of the resource you're requesting along with the query parameters.
+# Resources
 
-### API Requests by Resource
+Documentation for various API resources can be found separately in the following locations:
 
-#### Companies
+* Companies
+* Sessions
+* Responders
+* Responses
+
+## Companies
 
 **Fetch all companies**
 
@@ -63,7 +68,7 @@ Example Response:
 ```
 
 
-#### Sessions
+## Sessions
 
 **Fetch all sessions**
 
@@ -144,7 +149,7 @@ Example Response:
 }
 ```
 
-#### Responders
+## Responders
 
 **Fetch responders by session**
 
@@ -218,7 +223,7 @@ Parameters (note that all parameters are optional):
 | age_group  | integer | The age group of the responders (1 is 18-25, 2 is 26-40, 3 is 41-65, 4 is 65+) |
 | position   | string  | The position of the responders (C-Level, Senior, Manager, Junior)              |
 
-#### Responses
+## Responses
 
 **Fetch responses by value**
 
