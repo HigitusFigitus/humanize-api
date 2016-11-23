@@ -18,7 +18,7 @@ GET https://humanize-api.herokuapp.com/api/v1/companies
 
 Example Response:
 
-```
+```json
 // 20161122201059
 // https://humanize-api.herokuapp.com/api/v1/companies
 
@@ -50,7 +50,7 @@ GET https://humanize-api.herokuapp.com/api/v1/companies/company_id
 
 Example Response:
 
-```
+```json
 // 20161122201228
 // https://humanize-api.herokuapp.com/api/v1/companies/1
 
@@ -73,7 +73,7 @@ GET https://humanize-api.herokuapp.com/api/v1/companies/company_id/sessions
 
 Example Response:
 
-```
+```json
 // 20161122201333
 // https://humanize-api.herokuapp.com/api/v1/companies/1/sessions
 
@@ -129,7 +129,7 @@ GET https://humanize-api.herokuapp.com/api/v1/companies/company_id/sessions/sess
 
 Example Response:
 
-```
+```json
 // 20161122201344
 // https://humanize-api.herokuapp.com/api/v1/companies/1/sessions/4
 
@@ -154,7 +154,7 @@ GET https://humanize-api.herokuapp.com/api/v1/companies/company_id/sessions/sess
 
 Example Response:
 
-```
+```json
 // 20161122201418
 // https://humanize-api.herokuapp.com/api/v1/companies/1/sessions/4/responders
 
@@ -201,24 +201,24 @@ Example Response:
 }
 ```
 
-**Fetch responder by session for the pre-session survey**
+**Fetch a specific subset of responders**
+
+Example Query:
 
 ```
-GET https://humanize-api.herokuapp.com/api/v1/companies/company_id/sessions/session_id/responders?before=true
+GET https://humanize-api.herokuapp.com/api/v1/companies/company_id/sessions/session_id/responders?before=true&gender=female&age_group=2&position=Senior
 ```
 
-**Fetch responder by session for the post-session survey**
+Parameters (note that all parameters are optional):
 
-```
-GET https://humanize-api.herokuapp.com/api/v1/companies/company_id/sessions/session_id/responders?before=false
-```
+| Attributes | Type    | Description                                                                    |
+|------------|---------|--------------------------------------------------------------------------------|
+| before     | boolean | Filter responders by whether they were pre-survey or post-survey responders    |
+| gender     | string  | The gender of the responders                                                   |
+| age_group  | integer | The age group of the responders (1 is 18-25, 2 is 26-40, 3 is 41-65, 4 is 65+) |
+| position   | string  | The position of the responders (C-Level, Senior, Manager, Junior)              |
 
 #### Responses
-
-**Fetch all responses** 
-```
-GET https://humanize-api.herokuapp.com/api/v1
-```
 
 **Fetch responses by value**
 
