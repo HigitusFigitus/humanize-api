@@ -10,7 +10,7 @@ Generally speaking, ping the URL of the resource you're requesting along with th
 
 #### Companies
 
-** Fetch all companies **
+**Fetch all companies**
 
 ```
 GET https://humanize-api.herokuapp.com/api/v1/companies
