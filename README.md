@@ -8,7 +8,7 @@ The API root URL is located at `https://humanize-api.herokuapp.com/api/v1`.
 
 Documentation for various API resources can be found separately in the following locations:
 
-* Companies
+* [Companies](#companies)
 * Sessions
 * Responders
 * Responses
